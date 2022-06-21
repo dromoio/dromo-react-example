@@ -1,13 +1,43 @@
+import DromoUploader from "dromo-uploader-react";
 export const Uploader = (props: { setResults: (data: any[]) => void }) => {
   return (
-    <a
-      href="https://developer.dromo.io/getting-started"
-      target="_blank"
-      onClick={() => alert("Add Dromo to import data!")}
-      rel="noopener noreferrer"
-      className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-[#0052cc] hover:bg-[#172c4d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+    <DromoUploader
+      licenseKey="414617ed-5db9-4b84-b9a4-36c8c643914f"
+      fields={[
+        {
+          label: "First Name",
+          key: "first_name",
+        },
+        {
+          label: "Email",
+          key: "email_address",
+          validators: [
+            { validate: "required" },
+            {
+              validate: "regex_match",
+              regex: "^\\S+@\\S+$",
+              errorMessage: "Email must have an '@' symbol.",
+            },
+          ],
+        },
+      ]}
+      settings={{
+        importIdentifier: "Contacts",
+        developmentMode: true,
+      }}
+      user={{
+        id: "1",
+        name: "Jane Doe",
+        email: "jane@dromo.io",
+        companyId: "Dromo",
+        companyName: "12345",
+      }}
+      onResults={(response, metadata) =>
+        // Do something with the data here
+        props.setResults(response)
+      }
     >
-      Import Data
-    </a>
+      Launch Dromo
+    </DromoUploader>
   );
 };
