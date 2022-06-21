@@ -1,4 +1,4 @@
-export const Dromo = (props: { setResults: (data: any[]) => void }) => {
+export const Uploader = (props: { setResults: (data: any[]) => void }) => {
   return (
     <a
       href="https://developer.dromo.io/getting-started"

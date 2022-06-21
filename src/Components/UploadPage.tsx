@@ -1,4 +1,4 @@
-import { Dromo } from "./Dromo";
+import { Uploader } from "./Uploader";
 
 export const UploadPage = (props: {
   setUploadData: (data: any[][]) => void;
@@ -19,7 +19,7 @@ export const UploadPage = (props: {
               </p>
             </div>
             <div className="mt-5 sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:flex sm:items-center">
-              <Dromo setResults={props.setUploadData} />
+              <Uploader setResults={props.setUploadData} />
             </div>
           </div>
         </div>
